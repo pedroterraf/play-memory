@@ -36,7 +36,7 @@ function App() {
       const { error } = await supabase
         .from('ranking')
         .insert({ name: name, score: score.current });
-
+        location.reload();
       if (error && error.status === 409) {
         setError(true);
       } else {
