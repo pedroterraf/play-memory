@@ -1,0 +1,40 @@
+export const getImages = (size) => {
+    const images = [
+        "/docker.svg",
+        "/bun.svg",
+        "/deno.svg",
+        "/github.svg",
+        "/javascript.svg",
+        "/supabase.svg",
+        "/redis.svg",
+        "/svelte.svg",
+        "/vitejs.svg",
+        "/vscode.svg",
+        "/bootstrap.svg",
+        "/angular.svg",
+        "/tailwindcss.svg",
+        "/vue.svg",
+        "/nextjs_icon_dark.svg",
+        "/nestjs.svg",
+        "/materialui.svg",
+        "/sequelize.svg",
+        "/laravel.svg",
+        "/krakenjs.svg",
+        "/django.svg",
+        "/jest.svg",
+        "/fastapi.svg",
+        "/nodejs.svg",
+        "/csharp.svg",
+        "/typescript.svg",
+        "/c++.svg",
+        "/java.svg",
+        "/html5.svg",
+        "/python.svg",
+        "/css.svg",
+        "/svg.svg",
+        "/hostgator.svg",
+    ]
+
+    let newImages = images.slice(0, size);
+    return newImages.flatMap(item => [`1|${item}`, `2|${item}`]).sort(() => Math.random() - 0.5) //devuelve valores aleatorios entre -0.5 a 0.5
+}

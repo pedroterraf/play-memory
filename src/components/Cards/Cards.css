@@ -1,0 +1,92 @@
+.cards {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 0 0 10px 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px); 
+    width: 100%;
+    height: 100%;
+    padding: 1em;
+}
+
+.cards ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.cards li {
+    margin: 15px;
+}
+
+.cards .content {
+    perspective: 1000px;
+}
+
+.cards .front {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    backface-visibility: hidden;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.back {
+    display: flex;
+    width: 100px ;
+    height: 100px ;
+    align-items: center;
+    justify-content: center;
+    backface-visibility: hidden;
+    border: 1px solid #ffe600;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+@media (max-width: 850px) {
+    .cards .front {
+        width: 60px !important;
+        height: 60px !important;
+    }
+    .cards li {
+        margin: 4px !important;
+    }
+    .back {
+        width: 60px !important;
+        height: 60px !important;
+    }
+    .images-front {
+        width: 60px !important;
+        height: 60px !important;
+    }
+    .images-back {
+        width: 60px !important;
+        height: 60px !important;
+    }
+}
+
+.images-front {
+    width: 100px;
+    height: 100px;
+    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.4));
+    cursor: pointer;
+    object-fit: cover;
+    background-color: transparent;
+}
+
+.images-back {
+    width: 100px;
+    height: 100px;
+    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.4));
+    cursor: pointer;
+    object-fit: cover;
+    background-color: #FFF;
+}
