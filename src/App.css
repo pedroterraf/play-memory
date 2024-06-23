@@ -1,166 +1,162 @@
 .app {
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    height: 100vh;
-    text-align: center;
-    background-color: rgb(17, 17, 17);
-    border: 1px solid #ccc;
-    margin: 0;
-    border-radius: 10px;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  text-align: center;
+  background-color: rgb(17, 17, 17);
+  border: 1px solid #ccc;
+  margin: 0;
+  border-radius: 10px;
+  margin-top: 2px;
 }
 
 body{
-    display: flex;
-    margin: 0;
-    font-family: "VT323", monospace;
-    font-weight: 400;
-    font-style: normal;
+  display: flex;
+  margin: 0;
+  font-family: "VT323", monospace;
+  font-weight: 400;
+  font-style: normal;
 }
 
 h1{
-    text-transform: uppercase;
-    padding: 20px 0 ;
-    background: linear-gradient(
-        to right,
-        #ffe600 20%,
-        #004aad 40%,
-        #005bd3 60%,
-        #1279ff 80%
-    );
-    background-size: 200%;
-    color: transparent;
-    background-clip: text;
-    animation: shine 6s linear infinite;
-    margin: 0;
-    font-size: 100px !important;
-
+  text-transform: uppercase;
+  padding: 20px 0 ;
+  background: linear-gradient(
+      to right,
+      #ffe600 20%,
+      #004aad 40%,
+      #005bd3 60%,
+      #1279ff 80%
+  );
+  background-size: 200%;
+  color: transparent;
+  background-clip: text;
+  animation: shine 6s linear infinite;
+  margin: 0;
+  font-size: 100px !important;
 }
 
 @keyframes shine { 
-    to {
-        background-position: 200% center;
-    }
+  to {
+    background-position: 200% center;
+  }
 }
 
 h2 {
-    font-size: 30px;
-    margin-bottom: 30px;
+  font-size: 30px;
+  margin-bottom: 30px;
 }
 
 #root {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 2rem;
-    text-align: center;
-  }
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
   
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
-  }
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-  }
-  .logo.react:hover {
-    filter: drop-shadow(0 0 2em #61dafbaa);
-  }
-  
-  .card {
-    padding: 2em;
-  }
-  
-  .read-the-docs {
-    color: #888;
-  }
-  .App {
-    max-width: 800px;
-    background-color: #B9DBFE;
-    border-radius: 10px;
-    padding: 25px;
-  }
-  .App h1{
-    color: #fff;
-    text-transform: uppercase;
-    padding: 20px 0 ;
-    background-color: #7FBFFF;
-    text-shadow: 3px 3px 2px #2893ff;
-    border-radius: 5px;
-  }
-  
-  .App ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    list-style: none;
-    gap: 20px;
-  }
-  .App ul li {
-    border: solid 1px gray;
-    border-radius: 10px;
-    cursor: pointer;
-    background-color: #fff;
-  }
-  .App ul li {
-    width: 80px;
-  }
-  .App button {
-    margin: 0 5px;
-  }
-  .App input {
-    outline: none;
-    font-size: inherit;
-    padding: 7px;
-    border-radius: 5px;
-    border: 2px solid transparent;
-    width: 160px;
-    height: 50px;
-  }
-  input {
-    height: 30px;
-    margin-left: 5px;
-    margin-right: 5px;
-    border-radius: 5px;
-    background-color: #FFF;
-    color: black;
-    font-family: "VT323", monospace;
-    font-weight: 700;
-    font-size: 19px;
-    font-style: normal;
-  }
-  
-  li .content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    width: 75px;
-    height: 75px;
-    margin: 0px;
-  }
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
 
-  @media (max-width: 850px) {
-    li .content {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        width: 60px;
-        height: 60px;
-        margin: 0px;
-    }
-    .app {
-        height: 100%;
-    }
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+.App {
+  max-width: 800px;
+  background-color: #B9DBFE;
+  border-radius: 10px;
+  padding: 25px;
+}
+.App h1{
+  color: #fff;
+  text-transform: uppercase;
+  padding: 20px 0 ;
+  background-color: #7FBFFF;
+  text-shadow: 3px 3px 2px #2893ff;
+  border-radius: 5px;
+}
+  
+.App ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+  gap: 20px;
+}
+.App ul li {
+  border: solid 1px gray;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #fff;
+}
+.App ul li {
+  width: 80px;
+}
+.App button {
+  margin: 0 5px;
+}
+.App input {
+  outline: none;
+  font-size: inherit;
+  padding: 7px;
+  border-radius: 5px;
+  border: 2px solid transparent;
+  width: 160px;
+  height: 50px;
+}
+input {
+  height: 30px;
+  margin-left: 5px;
+  margin-right: 5px;
+  border-radius: 5px;
+  background-color: #FFF;
+  color: black;
+  font-family: "VT323", monospace;
+  font-weight: 700;
+  font-size: 19px;
+  font-style: normal;
+}
+
+li .content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 75px;
+  height: 75px;
+  margin: 0px;
+}
+
+@media (max-width: 850px) {
+  li .content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      width: 60px;
+      height: 60px;
+      margin: 0px;
   }
+}
 
   .front, .back{
     position: absolute;

@@ -6,7 +6,8 @@
     border-radius: 0 0 10px 10px;
     background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px); 
-    width: 100%;
+    width: 75em;
+    min-height: 75vh;
     height: 100%;
     padding: 1em;
 }
@@ -15,7 +16,51 @@
     list-style-type: none;
     padding: 0;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap;.cards .content {
+    perspective: 1000px;
+}
+
+.cards .flip {
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+.cards .flipped {
+    transform: rotateY(180deg);
+}
+
+.cards .front, .cards .back {
+    width: 100px;
+    height: 100px;
+    backface-visibility: hidden;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.cards .back {
+    transform: rotateY(180deg);
+    border-color: #ffe600;
+}
+
+@media (max-width: 850px) {
+    .cards {
+        height: 10em;
+    }
+    .cards .front, .cards .back {
+        width: 60px;
+        height: 60px;
+        
+    }
+    .images-front, .images-back {
+        width: 60px;
+        height: 60px;
+    }
+}
+
     justify-content: center;
 }
 
@@ -33,7 +78,6 @@
     justify-content: center;
     width: 100px;
     height: 100px;
-    backface-visibility: hidden;
     border: 1px solid #ccc;
     border-radius: 10px;
     overflow: hidden;
@@ -45,8 +89,7 @@
     height: 100px ;
     align-items: center;
     justify-content: center;
-    backface-visibility: hidden;
-    border: 1px solid #ffe600;
+    border: 1.5px solid #ffe600;
     border-radius: 10px;
     overflow: hidden;
 }
@@ -58,6 +101,13 @@
     }
     .cards li {
         margin: 4px !important;
+    }
+    .cards {
+        width: 100%;
+        min-height: 80vh;
+    }
+    #root{
+        padding: 0 !important;
     }
     .back {
         width: 60px !important;
@@ -89,4 +139,21 @@
     cursor: pointer;
     object-fit: cover;
     background-color: #FFF;
+}
+
+.flip {
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+.flipped {
+    transform: rotateY(180deg);
+}
+
+.ul {
+    display: flex !;
+    justify-content: center !;
+    align-items: center !;
+    width: 40em !;
 }

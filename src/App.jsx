@@ -12,6 +12,7 @@ function App() {
   const [warning, setWarning] = useState('');
   const [error, setError] = useState(false);
   const [ranking, setRanking] = useState([]);
+  const [initialView, setInitialView] = useState(true);
   const score = useRef(0);
 
   useEffect(() => {
@@ -48,6 +49,13 @@ function App() {
     }
   };
 
+  const handleChange = (e) => {
+    const inputValue = e.target.value;
+    // Capitalize the first letter and keep the rest as is
+    const capitalizedValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1);
+    setName(capitalizedValue);
+};
+
   return (
     <div className='app'>
       <h1>Memory Game</h1>
@@ -66,18 +74,18 @@ function App() {
         {save && (
           <>
             <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className={`${warning ? 'warning' : ''}`}
-              maxLength={20}
+                type="text"
+                value={name}
+                onChange={handleChange}
+                className={`${warning ? 'warning' : ''}`}
+                maxLength={20}
             />
             <button onClick={handleSave}>Save</button>
           </>
         )}
         {error && <p className='error'>The name exists.</p>}
       </div>
-      <Cards start={start} score={score} />
+      <Cards start={start} score={score} initialView={initialView} setInitialView={setInitialView} />
     </div>
   );
 }

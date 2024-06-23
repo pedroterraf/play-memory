@@ -1,41 +1,56 @@
-import './Cards.css'
+import './Cards.css';
 import { getImages } from '../../helpers/getImages';
 import { useEffect, useState } from 'react';
-import confetti from 'canvas-confetti'
+import confetti from 'canvas-confetti';
 
 let size = 3;
 let clicks = 0;
-const Cards = ({start, score}) => {
-    const [images, setImages] = useState(getImages(size))
-    const [selected, setSelected] = useState([])
-    const [opened, setOpened] = useState([])
 
-    const handleClick = (item) => {
-        if (start && !selected.includes(item) && !opened.includes(item)) {
-            clicks = clicks + 1;
+const Cards = ({ start, score, initialView, setInitialView }) => {
+    const [images, setImages] = useState(getImages(size));
+    const [selected, setSelected] = useState([]);
+    const [opened, setOpened] = useState([]);
+    const [flippedCards, setFlippedCards] = useState([]);
+
+    useEffect(() => {
+        setTimeout(() => {
+            if (start) {
+                setInitialView(false);
+            }
+        }, 5000);
+    }, [images, start]);
+
+    const handleClick = (item, index) => {
+        if (!initialView && start && !selected.includes(item) && !opened.includes(item) && flippedCards.indexOf(index) === -1) {
+            clicks++;
             if (selected.length < 2) {
-                setSelected(selected => selected.concat(item))
+                setSelected(selected => [...selected, item]);
+                setFlippedCards(flippedCards => [...flippedCards, index]);
             }
         }
-    }
+    };
 
     useEffect(() => {
         if (selected.length === 2) {
             if (selected[0].split('|')[1] === selected[1].split('|')[1]) {
-                setOpened(opened => opened.concat(selected))
+                setOpened(opened => [...opened, ...selected]);
             }
-            setTimeout(() => setSelected([]), 500)
+            setTimeout(() => {
+                setSelected([]);
+                setFlippedCards([]);
+            }, 500);
         }
-    }, [selected])
+    }, [selected]);
 
     useEffect(() => {
         if (opened.length === images.length) {
-            calculateScore()
+            calculateScore();
             setTimeout(() => {
-                size = size + 2;
+                size += 2;
                 clearArrays();
-                setImages(getImages(size))
-            }, 500)
+                setImages(getImages(size));
+                setInitialView(true);
+            }, 500);
 
             confetti({
                 particleCount: 200,
@@ -43,55 +58,57 @@ const Cards = ({start, score}) => {
                 spread: 300,
                 gravity: 1.5,
                 origin: { y: 0 }
-            })
+            });
         }
-    }, [opened])
+    }, [opened]);
 
     const calculateScore = () => {
         const passLevel = size * 10;
-        let total = score.current
-        const cards = size * 2
+        let total = score.current;
+        const cards = size * 2;
         if (clicks === cards) {
-            total = total + (cards * 2) + passLevel
+            total += (cards * 2) + passLevel;
         } else if (clicks > cards && clicks < cards + 5) {
-            total = total + cards + passLevel
+            total += cards + passLevel;
         } else if (clicks > cards + 5 && clicks < cards + 10) {
-            total = total + (cards / 2) + passLevel
+            total += (cards / 2) + passLevel;
         } else {
-            total = total + Math.round(cards / 3) + passLevel
+            total += Math.round(cards / 3) + passLevel;
         }
         clicks = 0;
         score.current = total;
-    }
+    };
 
     const clearArrays = () => {
         setSelected([]);
         setOpened([]);
-    }
+        setFlippedCards([]);
+    };
 
     let include = false;
     return (
         <div className="cards">
-            <h2>Score: {score.current}</h2>
-            <ul>
-                {
-                    images.map((item, index) => (
-                        <li key={index} onClick={() => handleClick(item)}>
-                            <div className="content">
-                                { include = selected.includes(item) || opened.includes(item) }
-                                <div className={`front ${include ? 'flip-front' : ''}`}>
-                                    <img src={"/question.png"} alt="icon" className='images-front' />
+            <h2>Score: {score.current} Pts</h2>
+            <ul className='ul'>
+                {images.map((item, index) => (
+                    <li key={index} onClick={() => handleClick(item, index)} className={`flip ${flippedCards.includes(index) ? 'flipped' : ''}`}>
+                        <div className="content">
+                            { include = selected.includes(item) || opened.includes(item) }
+                            {initialView || selected.includes(item) || opened.includes(item) ? (
+                                <div className={`back ${include ? 'flip-back' : 'flip-back'}`}>
+                                    <img src={item.split('|')[1] ? item.split('|')[1] : "/question.png"} alt="icon" className="images-back" />
                                 </div>
-                                <div className={`back ${include ? 'flip-back' : ''}`}>
-                                    <img src={include ? item.split('|')[1] : '/question.png'} alt="icon" className='images-back' />
+                            ) : (
+                                <div className={`front ${include ? 'flip-back' : 'flip-back'}`}>
+                                    <img src={"/question.png"} alt="icon" className="images-front" />
                                 </div>
-                            </div>
-                        </li>
-                    ))
-                }
+                            )}
+                        </div>
+                    </li>
+                ))}
             </ul>
         </div>
     );
-}
+};
 
 export default Cards;
