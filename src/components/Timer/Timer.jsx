@@ -1,36 +1,61 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Countdown from 'react-countdown';
 
-const Counter = ({props}) => <span>{/* {props.minutes}: */}{props.seconds === 0 ? '60' : props.seconds}</span>
+const Counter = ({ props }) => <span>{props.seconds === 0 ? '60' : props.seconds}</span>;
 
-const Timer = ({ start, setStart, setSave}) => {
-
+const Timer = ({ start, setStart, setSave }) => {
+    const [showInitialCountdown, setShowInitialCountdown] = useState(false);
+    const [initialCountdown, setInitialCountdown] = useState(5);
     const timeRef = useRef();
 
-    const handleEnd = ({start}) => {
-        setStart(false)
-        setSave(true)
-    }
+    const handleInitialCountdownEnd = () => {
+        setShowInitialCountdown(false);
+        timeRef.current.start(); // Inicia el contador principal de 60 segundos
+    };
+
+    const handleEnd = () => {
+        setStart(false);
+        setSave(true);
+    };
 
     useEffect(() => {
         if (start) {
-            timeRef.current.start()
+            setShowInitialCountdown(true);
+            setInitialCountdown(5); // Reinicia la cuenta regresiva inicial
         }
-    },[start])
+    }, [start]);
+
+    // Efecto para la cuenta regresiva inicial
+    useEffect(() => {
+        let initialCountdownTimer;
+        if (showInitialCountdown) {
+            initialCountdownTimer = setInterval(() => {
+                setInitialCountdown(prevCount => prevCount - 1);
+            }, 1000);
+        }
+        // Cuando la cuenta regresiva inicial llega a 0, se inicia el contador principal
+        if (initialCountdown === 0) {
+            clearInterval(initialCountdownTimer);
+            handleInitialCountdownEnd();
+        }
+
+        return () => clearInterval(initialCountdownTimer);
+    }, [showInitialCountdown, initialCountdown]);
 
     return (
         <div className="timer">
             <h3>
-                <Countdown 
+                <Countdown
                     date={Date.now() + 60000}
-                    renderer={props => <Counter props={props}/>}
+                    renderer={props => <Counter props={props} />}
                     onComplete={handleEnd}
                     autoStart={false}
                     ref={timeRef}
                 />
             </h3>
+            {initialCountdown !== 0 && <span>{initialCountdown}</span>}
         </div>
-    )
-}
+    );
+};
 
 export default Timer;
