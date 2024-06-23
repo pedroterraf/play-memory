@@ -1,7 +1,9 @@
 .cards {
+    display: flex;
     text-align: center;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    flex-direction: column;
     border: 1px solid #ccc;
     border-radius: 0 0 10px 10px;
     background-color: rgba(0, 0, 0, 0.5);
@@ -121,6 +123,12 @@
         width: 60px !important;
         height: 60px !important;
     }
+    .ul {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100% !important;
+    }
 }
 
 .images-front {
@@ -152,8 +160,8 @@
 }
 
 .ul {
-    display: flex !;
-    justify-content: center !;
-    align-items: center !;
-    width: 40em !;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35em;
 }
