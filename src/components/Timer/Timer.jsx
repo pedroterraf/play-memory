@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Countdown from 'react-countdown';
 
-const Counter = ({ props }) => <span>{props.seconds === 0 ? '60' : props.seconds}</span>;
+const Counter = ({ props }) => <span>{props.seconds === 0 ? '60' : props.seconds} Sec</span>;
 
 const Timer = ({ start, setStart, setSave }) => {
     const [showInitialCountdown, setShowInitialCountdown] = useState(false);
@@ -53,7 +53,7 @@ const Timer = ({ start, setStart, setSave }) => {
                     ref={timeRef}
                 />
             </h3>
-            {initialCountdown !== 0 && <span>{initialCountdown}</span>}
+            {initialCountdown !== 0 && <span>{initialCountdown} Sec</span>}
         </div>
     );
 };
