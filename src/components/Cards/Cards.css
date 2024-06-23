@@ -118,10 +118,12 @@
     .images-front {
         width: 60px !important;
         height: 60px !important;
+        border-radius: 10px;
     }
     .images-back {
         width: 60px !important;
         height: 60px !important;
+        border-radius: 10px;
     }
     .ul {
         display: flex;
@@ -138,6 +140,7 @@
     cursor: pointer;
     object-fit: cover;
     background-color: transparent;
+    border-radius: 10px;
 }
 
 .images-back {
@@ -147,6 +150,7 @@
     cursor: pointer;
     object-fit: cover;
     background-color: #FFF;
+    border-radius: 10px;
 }
 
 .flip {
