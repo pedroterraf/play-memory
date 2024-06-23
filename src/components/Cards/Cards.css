@@ -154,7 +154,7 @@
 }
 
 .flip {
-    transition: transform 0.6s;
+    transition: transform 0.15s;
     transform-style: preserve-3d;
     position: relative;
 }

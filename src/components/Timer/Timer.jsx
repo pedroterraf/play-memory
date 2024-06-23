@@ -3,7 +3,7 @@ import Countdown from 'react-countdown';
 
 const Counter = ({ props }) => <span>{props.seconds === 0 ? '60' : props.seconds} Sec</span>;
 
-const Timer = ({ start, setStart, setSave }) => {
+const Timer = ({ start, setStart, setSave, score }) => {
     const [showInitialCountdown, setShowInitialCountdown] = useState(false);
     const [initialCountdown, setInitialCountdown] = useState(5);
     const timeRef = useRef();
@@ -19,11 +19,12 @@ const Timer = ({ start, setStart, setSave }) => {
     };
 
     useEffect(() => {
+        console.log(start)
         if (start) {
             setShowInitialCountdown(true);
-            setInitialCountdown(5); // Reinicia la cuenta regresiva inicial
+            setInitialCountdown(5);
         }
-    }, [start]);
+    }, [start, score]);
 
     // Efecto para la cuenta regresiva inicial
     useEffect(() => {

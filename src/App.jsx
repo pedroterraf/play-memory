@@ -64,7 +64,7 @@ function App() {
           <Ranking ranking={ranking} setRanking={setRanking} />
         </div>
       )}
-      <Timer start={start} setStart={setStart} setSave={setSave} />
+      <Timer start={start} setStart={setStart} setSave={setSave} score={score} />
       <div className='buttons'>
         {(!start && !save) ? (
           <button onClick={() => setStart(true)}>Start</button>
