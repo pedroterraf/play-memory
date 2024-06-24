@@ -19,7 +19,6 @@ const Timer = ({ start, setStart, setSave, score }) => {
     };
 
     useEffect(() => {
-        console.log(start)
         if (start) {
             setShowInitialCountdown(true);
             setInitialCountdown(5);
