@@ -97,6 +97,7 @@ const Cards = ({ start, score, initialView, setInitialView }) => {
                             {initialView || selected.includes(item) || opened.includes(item) ? (
                                 <div className={`back ${include ? 'flip-back' : 'flip-back'}`}>
                                     <img src={item.split('|')[1] ? item.split('|')[1] : "/question.png"} alt="icon" className="images-back" />
+                                    <div className="pixelated-border"></div> {/* Añadir borde pixelado aquí */}
                                 </div>
                             ) : (
                                 <div className={`front ${include ? 'flip-back' : 'flip-back'}`}>
