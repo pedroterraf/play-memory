@@ -23,7 +23,7 @@ function App() {
         .order('score', { ascending: false });
 
       if (error) {
-        console.error('Error fetching ranking:'/* , error */);
+        console.error(`Error fetching ranking: ${error}`);
       } else {
         setRanking(data);
       }
